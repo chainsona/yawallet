@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Lato } from "next/font/google";
+import { Karla } from "next/font/google";
 
 import "./globals.css";
 
-import UiLayout from "./components/UiLayout";
+import UiLayout from "@/app/components/UiLayout";
 
-const contentFont = Lato({
+const contentFont = Karla({
   subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {

@@ -12,8 +12,8 @@ type UiLayoutProps = {
 
 export default function UiLayout({ children }: UiLayoutProps) {
   return (
-    <>
-      <Div100vh>{children}</Div100vh>
+    <Div100vh>
+      {children}
 
       <ToastContainer
         position="top-center"
@@ -28,6 +28,6 @@ export default function UiLayout({ children }: UiLayoutProps) {
         theme="dark"
         transition={Slide}
       />
-    </>
+    </Div100vh>
   );
 }
