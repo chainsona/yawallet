@@ -12,7 +12,7 @@ export default function Portofolio() {
   return (
     <main
       className="relative h-full
-        flex flex-col items-center justify-start px-7 pt-2
+        flex flex-col items-center justify-start px-2 sm:px-6 py-2
         bg-[#101010] text-gray-100"
     >
       <Navigation />

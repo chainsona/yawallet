@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
-import { Karla } from "next/font/google";
 
 import "./globals.css";
 
 import UiLayout from "@/app/components/UiLayout";
-
-const contentFont = Karla({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
+import { contentFont } from "@/app/style";
 
 export const metadata: Metadata = {
   title: "Ayowa",

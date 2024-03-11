@@ -1,10 +1,6 @@
-import { Arvo } from "next/font/google";
 import React from "react";
 
-const titleFont = Arvo({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+import { titleFont } from "@/app/style";
 
 type HeroTitleProps = {};
 
