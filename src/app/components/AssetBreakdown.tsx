@@ -11,18 +11,7 @@ import {
 } from "recharts";
 
 import { titleFont } from "@/app/style";
-
-type AssetBreakdownProps = {};
-
-const data = [
-  { name: "Tokens", value: 51908.8224 },
-  { name: "NFTs", value: 15197.9234 },
-  { name: "NFTs", value: 4089.8314 },
-  { name: "NFTs", value: 23818.0168 },
-  { name: "NFTs", value: 28428.4376 },
-  { name: "NFTs", value: 30340.8947 },
-  { name: "NFTs", value: 15733.6921 },
-];
+import { shortenNumber } from "../utils/primitives";
 
 const COLORS = [
   "#90be6d",
@@ -50,7 +39,6 @@ const renderActiveShape = (props: any) => {
     fill,
     payload,
     percent,
-    value,
   } = props;
   const sin = Math.sin(-RADIAN * midAngle);
   const cos = Math.cos(-RADIAN * midAngle);
@@ -113,12 +101,9 @@ const CustomTooltip = ({
     return (
       <div className="opacity-90 rounded-xl p-2 px-3 bg-[#101010]">
         <div className="">{payload[0].name}</div>
-        <p className="text-gray-300">{`Value: $${payload[0].value.toLocaleString(
-          undefined,
-          {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 5,
-          }
+        <p className="text-gray-300">{`Value: $${shortenNumber(
+          payload[0].value,
+          2
         )}`}</p>
       </div>
     );
@@ -127,7 +112,9 @@ const CustomTooltip = ({
   return null;
 };
 
-export default function AssetBreakdown({}: AssetBreakdownProps) {
+type AssetBreakdownProps = { data?: { name: string; value: number }[] };
+
+export default function AssetBreakdown({ data }: AssetBreakdownProps) {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   function onPieEnter(_: any, index: any) {
@@ -156,7 +143,7 @@ export default function AssetBreakdown({}: AssetBreakdownProps) {
             dataKey="value"
             onMouseEnter={onPieEnter}
           >
-            {data.map((_, index) => (
+            {(data || []).map((_, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}

@@ -3,7 +3,7 @@ import React from "react";
 import { titleFont } from "../style";
 import { formatNumber } from "../utils/primitives";
 
-type MetricNumberProps = { label: string; value: number };
+type MetricNumberProps = { label: string; value?: number };
 
 export default function MetricNumber({ label, value }: MetricNumberProps) {
   return (
@@ -15,7 +15,9 @@ export default function MetricNumber({ label, value }: MetricNumberProps) {
       </h3>
       <div className=""></div>
 
-      <div className="text-3xl text-gray-200">${formatNumber(76484.8793)}</div>
+      <div className={`text-3xl ${!value ? "text-gray-700" : "text-gray-200"}`}>
+        {!!value || value === 0 ? "$" + formatNumber(value) : "Unknown"}
+      </div>
     </div>
   );
 }

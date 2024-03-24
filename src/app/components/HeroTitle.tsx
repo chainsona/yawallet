@@ -15,7 +15,7 @@ export default function HeroTitle({}: HeroTitleProps) {
         Ayowa
       </h1>
 
-      <h2 className="sm:text-xl fontbold">Feel the Joy of exploring Solana</h2>
+      <h2 className="md:text-xl fontbold">Feel the Joy of exploring Solana</h2>
     </div>
   );
 }
